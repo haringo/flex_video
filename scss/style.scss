@@ -15,6 +15,8 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     align-content: space-between;
+    position: relative;
+    z-index: 3;
 
     h1 {
       color: #fff;
@@ -44,12 +46,15 @@ main {
     height: 100%;
     padding-top: 10vh;
     display: flex; //안쪽의 article 요소가 좌우로 배치되야하니까
+    position: relative;
+    z-index: 1;
 
     article {
       flex: 1;
       height: 100%; //굳이 안 줘도 부모값 상속
       transition: .5s;
       position: relative;
+      cursor: pointer;
 
       &::before {
         content: "";
@@ -166,6 +171,59 @@ main {
           color: #bbb;
         }
       }
+    }
+  }
+  
+  aside {
+    width: 100%;
+    height: 100vh;
+    background: #333;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 2;
+    padding: 5vw;
+    padding-left: 20%;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    transition: 1s;
+
+    &.on {
+      opacity: 1;
+      left: 0%;
+    }
+
+    .txtBox {
+      width: 25%;
+
+      h2 {
+        font: normal 120px/1 "Alegreya Sans SC";
+        margin-bottom: 30px;
+        color: #ddd;
+      }
+      p {
+        font: 18px/1.2 "arial";
+        color: #777;
+      }
+    }
+
+    .vidBox {
+      width: 72%;
+      padding-top: 150px;
+
+      video {
+        width: 100%;
+      }
+    }
+
+    .btnClose {
+      position: absolute;
+      top: 150px;
+      right: 5vw;
+      font: 16px/1 "arial";
+      color: orange;
+      cursor: pointer;
     }
   }
 }
